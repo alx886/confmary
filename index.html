@@ -117,7 +117,7 @@
     // Optimized Trust Badge Icons
     const PinkMeasureHeartIcon = ({ className }) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2a5.5 5.5 0 0 0-5 5.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
         {/* Sewing tape markings inside the heart */}
         <line x1="12" y1="8" stroke="currentColor" x2="14" y2="8" />
         <line x1="12" y1="11" stroke="currentColor" x2="15" y2="11" />
@@ -167,34 +167,39 @@
 
     const ALL_SIZES = ["3", "4", "6", "8", "10", "12", "14", "16", "S", "M", "L", "XL", "2XL", "3XL"];
 
-    const BASE_PRICES = {
-      "3": 1000, "4": 1500, "6": 2000, "8": 2500, "10": 3000, "12": 3500, "14": 4000,
-      "16": 4500, "S": 5000, "M": 5500, "L": 6000, "XL": 6500, "2XL": 7000, "3XL": 7500
-    };
-
+    // Updated pricing matrix derived from "Uniformes 2.csv"
     const PRODUCTS = [
       {
         id: 1,
         name: "Polera de Piqué",
         description: "Polera de diario oficial con cuello tejido, botones ultra resistentes e insignia bordada en alta definición de la Escuela El Carmen 270.",
         sizes: ALL_SIZES,
-        prices: BASE_PRICES,
+        prices: {
+          "3": 8000, "4": 8900, "6": 8900, "8": 9000, "10": 10900, "12": 10900, "14": 11900, "16": 11900,
+          "S": 12900, "M": 12900, "L": 12900, "XL": 13900, "2XL": 13900, "3XL": 13900
+        },
         image: "https://images.unsplash.com/photo-1588850450350-ea1ff71af03c?auto=format&fit=crop&q=80&w=600"
       },
       {
         id: 2,
         name: "Polera De Deporte",
-        description: "Polera deportiva oficial de tela respirable and de secado rápido. Ideal para las clases de educación física y talleres del colegio.",
+        description: "Polera deportiva de tela respirable y de secado rápido. Ideal para las clases de educación física y talleres del colegio.",
         sizes: ALL_SIZES,
-        prices: BASE_PRICES,
+        prices: {
+          "3": 7000, "4": 7900, "6": 7900, "8": 8000, "10": 9900, "12": 9900, "14": 10900, "16": 10900,
+          "S": 11900, "M": 11900, "L": 11900, "XL": 12900, "2XL": 12900, "3XL": 12900
+        },
         image: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&q=80&w=600"
       },
       {
         id: 3,
         name: "Buzo Completo",
-        description: "Conjunto deportivo escolar que incluye tanto la chaqueta de buzo como el pantalón. Diseñado con los colores institucionales oficiales.",
+        description: "Conjunto deportivo escolar que incluye tanto la chaqueta de buzo como el pantalón. Diseñado con los colores institucionales del colegio.",
         sizes: ALL_SIZES,
-        prices: BASE_PRICES,
+        prices: {
+          "3": 17900, "4": 18900, "6": 18900, "8": 19000, "10": 20900, "12": 20900, "14": 22900, "16": 22900,
+          "S": 24900, "M": 24900, "L": 24900, "XL": 26900, "2XL": 26900, "3XL": 26900
+        },
         image: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&q=80&w=600"
       },
       {
@@ -202,7 +207,10 @@
         name: "Chaqueta de Buzo",
         description: "Chaqueta deportiva oficial con cierre completo, bolsillos a los lados y cuello alto para proteger del frío. No se deforma con los lavados.",
         sizes: ALL_SIZES,
-        prices: BASE_PRICES,
+        prices: {
+          "3": 10000, "4": 12000, "6": 12000, "8": 13000, "10": 14000, "12": 14000, "14": 15000, "16": 15000,
+          "S": 16000, "M": 16000, "L": 16000, "XL": 17000, "2XL": 17000, "3XL": 17000
+        },
         image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&q=80&w=600"
       },
       {
@@ -210,7 +218,10 @@
         name: "Pantalón De Buzo",
         description: "Pantalón de buzo suelto y cómodo con pretina elástica reforzada. Costuras interiores de alta resistencia para aguantar los juegos en el patio.",
         sizes: ALL_SIZES,
-        prices: BASE_PRICES,
+        prices: {
+          "3": 8000, "4": 9000, "6": 9000, "8": 10000, "10": 11000, "12": 11000, "14": 13000, "16": 13000,
+          "S": 14000, "M": 14000, "L": 14000, "XL": 15000, "2XL": 15000, "3XL": 15000
+        },
         image: "https://images.unsplash.com/photo-1506152983158-b4a74a01c721?auto=format&fit=crop&q=80&w=600"
       },
       {
@@ -218,15 +229,21 @@
         name: "Polerón de Polar",
         description: "Polerón térmico súper abrigador con tecnología antipilling (no se le hacen motas). Ideal para pasar el invierno en la sala de clases.",
         sizes: ALL_SIZES,
-        prices: BASE_PRICES,
+        prices: {
+          "3": 16000, "4": 16000, "6": 16000, "8": 17000, "10": 18900, "12": 18900, "14": 20000, "16": 20000,
+          "S": 22000, "M": 22000, "L": 22000, "XL": 24000, "2XL": 24000, "3XL": 24000
+        },
         image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=600"
       },
       {
         id: 7,
-        name: "Polerón De Octavos",
-        description: "Edición especial y exclusiva confeccionada para los alumnos de Octavo Básico de la Escuela El Carmen. Diseño generacional oficial.",
+        name: "Polerón Generacional",
+        description: "Edición especial diseñada para cada generación de la Escuela El Carmen. El diseño de esta prenda cambia anualmente y se confecciona a la medida exacta de cada estudiante para un calce perfecto, razón por la cual requiere coordinarse directamente en el taller físico de costura.",
         sizes: ALL_SIZES,
-        prices: BASE_PRICES,
+        prices: {
+          "3": "CONSULTENOS", "4": "CONSULTENOS", "6": "CONSULTENOS", "8": "CONSULTENOS", "10": "CONSULTENOS", "12": "CONSULTENOS", "14": "CONSULTENOS", "16": "CONSULTENOS",
+          "S": "CONSULTENOS", "M": "CONSULTENOS", "L": "CONSULTENOS", "XL": "CONSULTENOS", "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
+        },
         image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&q=80&w=600"
       }
     ];
@@ -277,15 +294,13 @@
 
     const ProductCard = ({ product, onAdd }) => {
       const [selectedSize, setSelectedSize] = useState("10");
-      const currentPrice = product.prices[selectedSize] || 0;
+      const currentPrice = product.prices[selectedSize];
+      const isCustomPrice = currentPrice === "CONSULTENOS";
 
       return (
         <div className="group flex flex-col h-full bg-white rounded-[2rem] p-6 shadow-xl border-2 border-slate-200 hover:border-indigo-600 transition-all duration-300">
           <div className="relative">
             <ZoomImage src={product.image} alt={product.name} />
-            <div className="absolute top-4 left-4 bg-amber-400 text-indigo-950 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-md">
-              Diseño Oficial
-            </div>
           </div>
           
           <div className="mt-8 flex-1 flex flex-col">
@@ -294,8 +309,14 @@
                 {product.name}
               </h3>
               <div className="flex items-center gap-2">
-                <span className="text-3xl font-black text-indigo-700">${currentPrice.toLocaleString('es-CL')}</span>
-                <span className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Valor según talla</span>
+                {isCustomPrice ? (
+                  <span className="text-xl font-black text-indigo-700 uppercase tracking-tight">Consultar Valor</span>
+                ) : (
+                  <span className="text-3xl font-black text-indigo-700">${currentPrice.toLocaleString('es-CL')}</span>
+                )}
+                <span className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">
+                  {isCustomPrice ? "Hecho a medida" : "Valor según talla"}
+                </span>
               </div>
             </div>
             
@@ -305,7 +326,7 @@
 
             <div className="space-y-3 mb-6">
               <label className="text-xs uppercase font-black text-indigo-950 tracking-widest block border-b border-slate-100 pb-1">
-                Selecciona la Talla (Cambia el precio):
+                Selecciona la Talla:
               </label>
               <div className="grid grid-cols-5 gap-2">
                 {product.sizes.map(size => (
@@ -353,7 +374,7 @@
       const APPLE_MAPS_URL = `https://maps.apple.com/?q=${encodeURIComponent(PICKUP_ADDRESS)}`;
 
       const addToCart = (product, size) => {
-        const priceForSize = product.prices[size] || 0;
+        const priceForSize = product.prices[size];
         const cartId = `${product.id}-${size}`;
         const existing = cart.find(item => item.cartId === cartId);
         
@@ -387,7 +408,14 @@
         }));
       };
 
-      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      // Filter out non-numeric prices (like "CONSULTENOS") from the mathematical cart subtotal sum
+      const total = cart.reduce((sum, item) => {
+        const numericPrice = typeof item.price === 'number' ? item.price : 0;
+        return sum + (numericPrice * item.quantity);
+      }, 0);
+
+      // Check if there is any custom-measured product added to the cart
+      const hasCustomItems = cart.some(item => item.price === "CONSULTENOS");
 
       const handleSendWhatsApp = (e) => {
         e.preventDefault();
@@ -405,10 +433,16 @@
         message += `\n--- *DETALLE DEL PEDIDO* ---\n`;
 
         cart.forEach(item => {
-          message += `• ${item.quantity}x ${item.name}\n  └ Talla: ${item.selectedSize} - $${(item.price * item.quantity).toLocaleString('es-CL')} CLP\n`;
+          const formattedPrice = typeof item.price === 'number' 
+            ? `$${(item.price * item.quantity).toLocaleString('es-CL')} CLP` 
+            : 'Por convenir (confección a medida)';
+          message += `• ${item.quantity}x ${item.name}\n  └ Talla: ${item.selectedSize} - ${formattedPrice}\n`;
         });
 
-        message += `\n💰 *TOTAL ESTIMADO:* $${total.toLocaleString('es-CL')} CLP`;
+        message += `\n💰 *TOTAL ESTIMADO DE PRENDAS ESTÁNDAR:* $${total.toLocaleString('es-CL')} CLP`;
+        if (hasCustomItems) {
+          message += `\n⚠️ *Nota:* El pedido incluye prendas personalizadas (Polerón Generacional) cuyo valor final a medida se acuerda en el taller.`;
+        }
         message += `\n\n_Hola Mary, vi tu página web y te escribo para encargarte los uniformes de la Escuela El Carmen. Me gustaría coordinar el retiro y pago presencial en tu taller de Av. Principal Cap. Ignacio Carrera Pinto 805, Recoleta._`;
 
         window.open(`https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(message)}`, '_blank');
@@ -417,11 +451,11 @@
       return (
         <div className="min-h-screen bg-slate-50 font-sans text-slate-950">
           
-          {/* Navegación Principal - NAVBAR NO PEGAJOSA (Logo no se queda en pantalla al hacer scroll) */}
+          {/* Navegación Principal - NAVBAR NO PEGAJOSA */}
           <nav className="relative z-40 bg-indigo-950 border-b-4 border-amber-400 shadow-xl">
             <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between relative">
               
-              {/* Logo con posicionamiento absoluto - Efecto hover de popping removido - NUEVO URL */}
+              {/* Logo con posicionamiento absoluto */}
               <a href="#" className="absolute left-4 top-1 z-50 flex items-center">
                 <img 
                   src="https://i.ibb.co/k6yL62mW/conflogo2.png" 
@@ -452,16 +486,13 @@
             className="relative py-24 px-4 bg-white bg-cover bg-center overflow-hidden"
             style={{ backgroundImage: "url('https://i.ibb.co/zW40Wg1p/sewing.jpg')" }}
           >
-            {/* UPDATED: Opacity reduced to white/60 to make the background sewing pattern substantially more visible and prominent */}
             <div className="absolute inset-0 bg-white/60 z-0" />
 
             <div className="relative z-10 max-w-4xl mx-auto text-center">
-              {/* Added high contrast background and ring for better separation from the vibrant background */}
               <span className="inline-block px-5 py-2 bg-amber-200 text-amber-950 rounded-lg text-xs font-black uppercase tracking-[0.2em] mb-8 border-2 border-amber-400 shadow-md">
                 📍 Retiro y pago exclusivo en taller (Recoleta) • Previa coordinación
               </span>
               
-              {/* Added soft white drop-shadows to titles and descriptions to ensure superb legibility over the more visible image */}
               <h2 className="text-5xl md:text-7xl font-black text-indigo-950 mb-8 leading-[0.9] tracking-tighter drop-shadow-[0_2px_8px_rgba(255,255,255,1)]">
                 Uniformes hechos para <br/>
                 <span className="text-indigo-600">durar todo el año escolar.</span>
@@ -473,7 +504,7 @@
             </div>
           </header>
 
-          {/* UPDATED Section: 4 Trust Pillars / Badges right below Hero */}
+          {/* Section: 4 Trust Pillars / Badges right below Hero */}
           <section className="bg-white border-t border-slate-100 pb-16 px-4">
             <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               
@@ -524,7 +555,7 @@
             </div>
           </section>
 
-          {/* Seccion Convenio Escuela El Carmen 270 */}
+          {/* Seccion Experiencia Escuela El Carmen 270 */}
           <section 
             className="relative text-white py-20 px-4 border-y-4 border-amber-400 bg-cover bg-center overflow-hidden"
             style={{ backgroundImage: "url('https://i.ibb.co/tpVSjPtw/DSC-1262.jpg')" }}
@@ -535,10 +566,6 @@
               
               {/* Insignia Escolar */}
               <div className="w-full lg:w-1/3 flex flex-col items-center text-center bg-indigo-950/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/20 shadow-2xl relative overflow-hidden group">
-                <div className="absolute top-4 right-4 bg-amber-400 text-indigo-950 text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
-                  Oficial
-                </div>
-                
                 <a 
                   href="https://escuelaelcarmen.cl/"
                   target="_blank"
@@ -573,11 +600,11 @@
                 </a>
               </div>
 
-              {/* Reseña de Proveedor con Text Shadows para alta legibilidad */}
+              {/* Reseña de Proveedor */}
               <div className="w-full lg:w-2/3 space-y-6 drop-shadow-lg">
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="bg-amber-400 text-indigo-950 px-4 py-1.5 rounded-xl text-xs font-black uppercase tracking-wider flex items-center gap-2 shadow-md">
-                    <AwardIcon className="w-4 h-4" /> Proveedor Oficial
+                    <AwardIcon className="w-4 h-4" /> Tradición Escolar
                   </span>
                   <span className="border-2 border-white/30 text-white px-4 py-1 rounded-xl text-xs font-black uppercase tracking-wider bg-indigo-950/30">
                     Desde 1998
@@ -590,10 +617,10 @@
 
                 <div className="space-y-4 text-white text-base md:text-lg font-bold leading-relaxed drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
                   <p>
-                    Por <strong>más de 28 años</strong>, <span className="text-amber-400 font-black">Confecciones Mary</span> ha tenido el privilegio de ser el proveedor oficial de los uniformes para la <strong>Escuela El Carmen 270 de Conchalí</strong>.
+                    Por <strong>más de 28 años</strong>, <span className="text-amber-400 font-black">Confecciones Mary</span> ha tenido el orgullo de confeccionar y entregar uniformes de alta calidad para la comunidad de la <strong>Escuela El Carmen 270 de Conchalí</strong>.
                   </p>
                   <p>
-                    Nuestra duradera alianza es reflejo de un compromiso inquebrantable con las familias de la comuna. Garantizamos el <strong>patrón de diseño oficial</strong>, los colores corporativos exactos y el bordado institucional autorizado de alta definición que no se deforma ni destiñe con el uso constante ni los lavados frecuentes.
+                    Nuestra larga trayectoria es reflejo de un compromiso inquebrantable con las familias del sector. Elaboramos cada prenda siguiendo con total fidelidad el patrón de diseño, los colores institucionales exactos y un bordado de alta definición resistente al desgaste del uso constante y los lavados frecuentes.
                   </p>
                 </div>
 
@@ -604,7 +631,7 @@
                     </div>
                     <div>
                       <h4 className="font-black text-sm uppercase text-white tracking-wide">Fidelidad de Diseño</h4>
-                      <p className="text-xs text-indigo-150 font-semibold">Bordados autorizados por la directiva escolar.</p>
+                      <p className="text-xs text-indigo-150 font-semibold">Bordados de alta precisión y colores institucionales exactos.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 bg-indigo-955/80 p-4 rounded-2xl border border-white/10 shadow-lg">
@@ -704,26 +731,31 @@
                       <p className="text-slate-500 mt-2 font-medium">Agrega prendas para iniciar tu encargo</p>
                     </div>
                   ) : (
-                    cart.map(item => (
-                      <div key={item.cartId} className="flex gap-4 p-4 bg-white rounded-2xl border-2 border-slate-200 shadow-sm animate-in fade-in slide-in-from-bottom-2">
-                        <img src={item.image} className="w-20 h-24 object-cover rounded-xl shrink-0" />
-                        <div className="flex-1">
-                          <h4 className="font-black text-slate-950 text-base leading-tight uppercase">{item.name}</h4>
-                          <p className="text-[11px] font-black text-indigo-700 uppercase mt-1">Talla: {item.selectedSize}</p>
-                          <div className="flex items-center justify-between mt-3">
-                            <div className="flex items-center gap-1 bg-slate-100 rounded-lg p-1 border border-slate-200">
-                              <button onClick={() => updateQuantity(item.cartId, -1)} className="w-8 h-8 flex items-center justify-center bg-white hover:bg-indigo-600 hover:text-white rounded-md transition-all shadow-sm font-bold text-lg">-</button>
-                              <span className="text-sm font-black w-8 text-center text-slate-950">{item.quantity}</span>
-                              <button onClick={() => updateQuantity(item.cartId, 1)} className="w-8 h-8 flex items-center justify-center bg-white hover:bg-indigo-600 hover:text-white rounded-md transition-all shadow-sm font-bold text-lg">+</button>
+                    cart.map(item => {
+                      const isCustom = item.price === "CONSULTENOS";
+                      return (
+                        <div key={item.cartId} className="flex gap-4 p-4 bg-white rounded-2xl border-2 border-slate-200 shadow-sm animate-in fade-in slide-in-from-bottom-2">
+                          <img src={item.image} className="w-20 h-24 object-cover rounded-xl shrink-0" />
+                          <div className="flex-1">
+                            <h4 className="font-black text-slate-950 text-base leading-tight uppercase">{item.name}</h4>
+                            <p className="text-[11px] font-black text-indigo-700 uppercase mt-1">Talla: {item.selectedSize}</p>
+                            <div className="flex items-center justify-between mt-3">
+                              <div className="flex items-center gap-1 bg-slate-100 rounded-lg p-1 border border-slate-200">
+                                <button onClick={() => updateQuantity(item.cartId, -1)} className="w-8 h-8 flex items-center justify-center bg-white hover:bg-indigo-600 hover:text-white rounded-md transition-all shadow-sm font-bold text-lg">-</button>
+                                <span className="text-sm font-black w-8 text-center text-slate-950">{item.quantity}</span>
+                                <button onClick={() => updateQuantity(item.cartId, 1)} className="w-8 h-8 flex items-center justify-center bg-white hover:bg-indigo-600 hover:text-white rounded-md transition-all shadow-sm font-bold text-lg">+</button>
+                              </div>
+                              <span className="font-black text-lg text-slate-950">
+                                {isCustom ? "A convenir" : `$${(item.price * item.quantity).toLocaleString('es-CL')}`}
+                              </span>
                             </div>
-                            <span className="font-black text-lg text-slate-950">${(item.price * item.quantity).toLocaleString('es-CL')}</span>
                           </div>
+                          <button onClick={() => removeFromCart(item.cartId)} className="text-slate-400 hover:text-red-600 transition-colors p-1">
+                            <XIcon className="w-5 h-5" />
+                          </button>
                         </div>
-                        <button onClick={() => removeFromCart(item.cartId)} className="text-slate-400 hover:text-red-600 transition-colors p-1">
-                          <XIcon className="w-5 h-5" />
-                        </button>
-                      </div>
-                    ))
+                      );
+                    })
                   )}
                 </div>
 
@@ -801,9 +833,16 @@
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between py-6 border-t-2 border-dashed border-slate-200">
-                      <span className="text-slate-600 font-bold uppercase text-xs tracking-[0.2em]">Total Estimado</span>
-                      <span className="text-4xl font-black text-indigo-950">${total.toLocaleString('es-CL')}</span>
+                    <div className="flex flex-col py-6 border-t-2 border-dashed border-slate-200 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-slate-600 font-bold uppercase text-xs tracking-[0.2em]">Total Estimado Prendas Estándar</span>
+                        <span className="text-4xl font-black text-indigo-950">${total.toLocaleString('es-CL')}</span>
+                      </div>
+                      {hasCustomItems && (
+                        <p className="text-xs text-indigo-600 font-extrabold text-right uppercase tracking-wider">
+                          + valor de Polerón Generacional (confeccionado a medida en taller)
+                        </p>
+                      )}
                     </div>
 
                     <button 
@@ -873,12 +912,12 @@
                 </div>
               </div>
 
+              {/* UPDATED: Flexible pickup schedule (7 days a week, customized with parents) */}
               <div className="space-y-6">
                 <h4 className="text-xl font-black uppercase tracking-widest text-amber-400">Horario y Entregas</h4>
                 <p className="text-indigo-100 font-semibold opacity-80 leading-relaxed">
-                  Lunes a Viernes: 09:00 - 18:30 <br/>
-                  Sábado: 10:00 - 14:00 <br/><br/>
-                  <b>Todo pedido se retira y paga presencialmente</b> en nuestro taller en Recoleta. El día y la hora de retiro se coordinan directamente por WhatsApp.
+                  <b>Disponibilidad total de lunes a domingo</b> con horarios completamente flexibles pensados para adaptarse a la rutina de los apoderados.<br/><br/>
+                  Los retiros y la hora de entrega en nuestro taller en Recoleta se coordinan de forma personalizada y directa por WhatsApp, pudiendo ser en el momento que más te acomode.
                 </p>
               </div>
             </div>
