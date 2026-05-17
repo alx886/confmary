@@ -117,7 +117,7 @@
     // Optimized Trust Badge Icons
     const PinkMeasureHeartIcon = ({ className }) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2a5.5 5.5 0 0 0-5 5.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
         {/* Sewing tape markings inside the heart */}
         <line x1="12" y1="8" stroke="currentColor" x2="14" y2="8" />
         <line x1="12" y1="11" stroke="currentColor" x2="15" y2="11" />
@@ -167,7 +167,7 @@
 
     const ALL_SIZES = ["3", "4", "6", "8", "10", "12", "14", "16", "S", "M", "L", "XL", "2XL", "3XL"];
 
-    // Updated pricing matrix derived from "Uniformes 2.csv"
+    // Updated pricing matrix derived from "Uniformes 2.csv" with 2XL and 3XL set to "CONSULTENOS"
     const PRODUCTS = [
       {
         id: 1,
@@ -176,29 +176,29 @@
         sizes: ALL_SIZES,
         prices: {
           "3": 8000, "4": 8900, "6": 8900, "8": 9000, "10": 10900, "12": 10900, "14": 11900, "16": 11900,
-          "S": 12900, "M": 12900, "L": 12900, "XL": 13900, "2XL": 13900, "3XL": 13900
+          "S": 12900, "M": 12900, "L": 12900, "XL": 13900, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
         },
         image: "https://images.unsplash.com/photo-1588850450350-ea1ff71af03c?auto=format&fit=crop&q=80&w=600"
       },
       {
         id: 2,
         name: "Polera De Deporte",
-        description: "Polera deportiva de tela respirable y de secado rápido. Ideal para las clases de educación física y talleres del colegio.",
+        description: "Polera deportiva oficial de tela respirable y de secado rápido. Ideal para las clases de educación física y talleres del colegio.",
         sizes: ALL_SIZES,
         prices: {
           "3": 7000, "4": 7900, "6": 7900, "8": 8000, "10": 9900, "12": 9900, "14": 10900, "16": 10900,
-          "S": 11900, "M": 11900, "L": 11900, "XL": 12900, "2XL": 12900, "3XL": 12900
+          "S": 11900, "M": 11900, "L": 11900, "XL": 12900, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
         },
         image: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&q=80&w=600"
       },
       {
         id: 3,
         name: "Buzo Completo",
-        description: "Conjunto deportivo escolar que incluye tanto la chaqueta de buzo como el pantalón. Diseñado con los colores institucionales del colegio.",
+        description: "Conjunto deportivo escolar que incluye tanto la chaqueta de buzo como el pantalón. Diseñado con los colores institucionales oficiales.",
         sizes: ALL_SIZES,
         prices: {
           "3": 17900, "4": 18900, "6": 18900, "8": 19000, "10": 20900, "12": 20900, "14": 22900, "16": 22900,
-          "S": 24900, "M": 24900, "L": 24900, "XL": 26900, "2XL": 26900, "3XL": 26900
+          "S": 24900, "M": 24900, "L": 24900, "XL": 26900, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
         },
         image: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&q=80&w=600"
       },
@@ -209,7 +209,7 @@
         sizes: ALL_SIZES,
         prices: {
           "3": 10000, "4": 12000, "6": 12000, "8": 13000, "10": 14000, "12": 14000, "14": 15000, "16": 15000,
-          "S": 16000, "M": 16000, "L": 16000, "XL": 17000, "2XL": 17000, "3XL": 17000
+          "S": 16000, "M": 16000, "L": 16000, "XL": 17000, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
         },
         image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&q=80&w=600"
       },
@@ -220,7 +220,7 @@
         sizes: ALL_SIZES,
         prices: {
           "3": 8000, "4": 9000, "6": 9000, "8": 10000, "10": 11000, "12": 11000, "14": 13000, "16": 13000,
-          "S": 14000, "M": 14000, "L": 14000, "XL": 15000, "2XL": 15000, "3XL": 15000
+          "S": 14000, "M": 14000, "L": 14000, "XL": 15000, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
         },
         image: "https://images.unsplash.com/photo-1506152983158-b4a74a01c721?auto=format&fit=crop&q=80&w=600"
       },
@@ -231,7 +231,7 @@
         sizes: ALL_SIZES,
         prices: {
           "3": 16000, "4": 16000, "6": 16000, "8": 17000, "10": 18900, "12": 18900, "14": 20000, "16": 20000,
-          "S": 22000, "M": 22000, "L": 22000, "XL": 24000, "2XL": 24000, "3XL": 24000
+          "S": 22000, "M": 22000, "L": 22000, "XL": 24000, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
         },
         image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=600"
       },
@@ -441,7 +441,7 @@
 
         message += `\n💰 *TOTAL ESTIMADO DE PRENDAS ESTÁNDAR:* $${total.toLocaleString('es-CL')} CLP`;
         if (hasCustomItems) {
-          message += `\n⚠️ *Nota:* El pedido incluye prendas personalizadas (Polerón Generacional) cuyo valor final a medida se acuerda en el taller.`;
+          message += `\n⚠️ *Nota:* El pedido incluye prendas personalizadas (Polerón Generacional o tallas especiales 2XL/3XL) cuyo valor final a medida se acuerda en el taller.`;
         }
         message += `\n\n_Hola Mary, vi tu página web y te escribo para encargarte los uniformes de la Escuela El Carmen. Me gustaría coordinar el retiro y pago presencial en tu taller de Av. Principal Cap. Ignacio Carrera Pinto 805, Recoleta._`;
 
@@ -840,7 +840,7 @@
                       </div>
                       {hasCustomItems && (
                         <p className="text-xs text-indigo-600 font-extrabold text-right uppercase tracking-wider">
-                          + valor de Polerón Generacional (confeccionado a medida en taller)
+                          + valor de Polerón Generacional o tallas especiales 2XL/3XL (confeccionados a medida en taller)
                         </p>
                       )}
                     </div>
@@ -868,7 +868,7 @@
                   <img 
                     src="https://i.ibb.co/k6yL62mW/conflogo2.png" 
                     alt="Confecciones Mary Logo" 
-                    className="h-20 md:h-24 w-auto object-contain transition-transform hover:scale-105 duration-300"
+                    className="h-20 md:h-24 w-auto object-contain transition-transform duration-300"
                   />
                 </div>
                 
@@ -880,7 +880,6 @@
               <div className="space-y-6">
                 <h4 className="text-xl font-black uppercase tracking-widest text-amber-400">Dirección & Taller</h4>
                 <div className="space-y-4">
-                  {/* UPDATED: Reduced padding of direction card to maintain perfect proportion and balance */}
                   <div className="bg-white/5 p-4 rounded-2xl border-2 border-white/10 flex items-start gap-4">
                     <MapPinIcon className="w-8 h-8 text-amber-400 shrink-0 mt-1" />
                     <div>
@@ -897,7 +896,6 @@
                       </div>
                     </div>
                   </div>
-                  {/* UPDATED: Reduced padding and made text single line and smaller */}
                   <div className="bg-white/5 p-4 rounded-2xl border-2 border-white/10 flex items-center gap-4">
                     <img 
                       src="https://i.ibb.co/bjY9vPqQ/whatsapplogo.png" 
@@ -912,7 +910,6 @@
                 </div>
               </div>
 
-              {/* UPDATED: Flexible pickup schedule (7 days a week, customized with parents) */}
               <div className="space-y-6">
                 <h4 className="text-xl font-black uppercase tracking-widest text-amber-400">Horario y Entregas</h4>
                 <p className="text-indigo-100 font-semibold opacity-80 leading-relaxed">
