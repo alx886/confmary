@@ -161,7 +161,7 @@
         <line x1="12" y1="2" x2="12" y2="6" />
         <line x1="12" y1="18" x2="12" y2="22" />
         <line x1="2" y1="12" x2="6" y2="12" />
-        <line x1="18" y1="12" x2="22" y2="12" />
+        <line x1="18" y1="12" x2="22" h2="12" />
       </svg>
     );
 
@@ -421,7 +421,7 @@
           <nav className="relative z-40 bg-indigo-950 border-b-4 border-amber-400 shadow-xl">
             <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between relative">
               
-              {/* Logo con posicionamiento absoluto - Fluye naturalmente con el scroll general de la página */}
+              {/* Logo con posicionamiento absoluto - Efecto hover de popping removido - NUEVO URL */}
               <a href="#" className="absolute left-4 top-1 z-50 flex items-center">
                 <img 
                   src="https://i.ibb.co/k6yL62mW/conflogo2.png" 
@@ -447,17 +447,27 @@
             </div>
           </nav>
 
-          {/* Hero Bienvenida */}
-          <header className="relative py-20 px-4 bg-white">
-            <div className="max-w-4xl mx-auto text-center">
-              <span className="inline-block px-5 py-2 bg-amber-100 text-amber-950 rounded-lg text-xs font-black uppercase tracking-[0.2em] mb-8 border border-amber-400/40">
+          {/* Hero Bienvenida - Background Image visibility enhanced */}
+          <header 
+            className="relative py-24 px-4 bg-white bg-cover bg-center overflow-hidden"
+            style={{ backgroundImage: "url('https://i.ibb.co/zW40Wg1p/sewing.jpg')" }}
+          >
+            {/* UPDATED: Opacity reduced to white/60 to make the background sewing pattern substantially more visible and prominent */}
+            <div className="absolute inset-0 bg-white/60 z-0" />
+
+            <div className="relative z-10 max-w-4xl mx-auto text-center">
+              {/* Added high contrast background and ring for better separation from the vibrant background */}
+              <span className="inline-block px-5 py-2 bg-amber-200 text-amber-950 rounded-lg text-xs font-black uppercase tracking-[0.2em] mb-8 border-2 border-amber-400 shadow-md">
                 📍 Retiro y pago exclusivo en taller (Recoleta) • Previa coordinación
               </span>
-              <h2 className="text-5xl md:text-7xl font-black text-indigo-950 mb-8 leading-[0.9] tracking-tighter">
+              
+              {/* Added soft white drop-shadows to titles and descriptions to ensure superb legibility over the more visible image */}
+              <h2 className="text-5xl md:text-7xl font-black text-indigo-950 mb-8 leading-[0.9] tracking-tighter drop-shadow-[0_2px_8px_rgba(255,255,255,1)]">
                 Uniformes hechos para <br/>
                 <span className="text-indigo-600">durar todo el año escolar.</span>
               </h2>
-              <p className="text-slate-900 max-w-2xl mx-auto text-xl font-semibold leading-relaxed opacity-90">
+              
+              <p className="text-slate-900 max-w-2xl mx-auto text-xl font-bold leading-relaxed drop-shadow-[0_2px_6px_rgba(255,255,255,1)]">
                 Confección nacional de alta calidad pensada para el día a día de los escolares. Elige las tallas oficiales, ingresa tus datos y coordina el retiro presencial de forma directa por WhatsApp.
               </p>
             </div>
@@ -814,10 +824,10 @@
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1">
                 
-                {/* Logo de imagen en footer - UPDATED to conflogo2.png to keep consistent with header */}
+                {/* Logo de imagen en footer */}
                 <div className="flex items-center mb-8">
                   <img 
-                    src="https://i.ibb.co/k6yL62mW/conflogo2.png" 
+                    src="https://i.ibb.co/v41Ps4rF/conflogo.png" 
                     alt="Confecciones Mary Logo" 
                     className="h-20 md:h-24 w-auto object-contain transition-transform hover:scale-105 duration-300"
                   />
