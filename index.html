@@ -168,6 +168,7 @@
     const ALL_SIZES = ["3", "4", "6", "8", "10", "12", "14", "16", "S", "M", "L", "XL", "2XL", "3XL"];
 
     // Updated pricing matrix derived from "Uniformes 2.csv" with 2XL and 3XL set to "CONSULTENOS"
+    // Split Polerón Generacional into A, B and C variations with specific images
     const PRODUCTS = [
       {
         id: 1,
@@ -237,14 +238,36 @@
       },
       {
         id: 7,
-        name: "Polerón Generacional",
+        name: "Polerón Generacional A",
         description: "Edición especial diseñada para cada generación de la Escuela El Carmen. El diseño de esta prenda cambia anualmente y se confecciona a la medida exacta de cada estudiante para un calce perfecto, razón por la cual requiere coordinarse directamente en el taller físico de costura.",
         sizes: ALL_SIZES,
         prices: {
           "3": "CONSULTENOS", "4": "CONSULTENOS", "6": "CONSULTENOS", "8": "CONSULTENOS", "10": "CONSULTENOS", "12": "CONSULTENOS", "14": "CONSULTENOS", "16": "CONSULTENOS",
           "S": "CONSULTENOS", "M": "CONSULTENOS", "L": "CONSULTENOS", "XL": "CONSULTENOS", "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
         },
-        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&q=80&w=600"
+        image: "https://i.ibb.co/VWf3MpDg/Generacional-A.jpg"
+      },
+      {
+        id: 8,
+        name: "Polerón Generacional B",
+        description: "Edición especial diseñada para cada generación de la Escuela El Carmen. El diseño de esta prenda cambia anualmente y se confecciona a la medida exacta de cada estudiante para un calce perfecto, razón por la cual requiere coordinarse directamente en el taller físico de costura.",
+        sizes: ALL_SIZES,
+        prices: {
+          "3": "CONSULTENOS", "4": "CONSULTENOS", "6": "CONSULTENOS", "8": "CONSULTENOS", "10": "CONSULTENOS", "12": "CONSULTENOS", "14": "CONSULTENOS", "16": "CONSULTENOS",
+          "S": "CONSULTENOS", "M": "CONSULTENOS", "L": "CONSULTENOS", "XL": "CONSULTENOS", "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
+        },
+        image: "https://i.ibb.co/LF172Jx/Generacional-B.jpg"
+      },
+      {
+        id: 9,
+        name: "Polerón Generacional C",
+        description: "Edición especial diseñada para cada generación de la Escuela El Carmen. El diseño de esta prenda cambia anualmente y se confecciona a la medida exacta de cada estudiante para un calce perfecto, razón por la cual requiere coordinarse directamente en el taller físico de costura.",
+        sizes: ALL_SIZES,
+        prices: {
+          "3": "CONSULTENOS", "4": "CONSULTENOS", "6": "CONSULTENOS", "8": "CONSULTENOS", "10": "CONSULTENOS", "12": "CONSULTENOS", "14": "CONSULTENOS", "16": "CONSULTENOS",
+          "S": "CONSULTENOS", "M": "CONSULTENOS", "L": "CONSULTENOS", "XL": "CONSULTENOS", "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
+        },
+        image: "https://i.ibb.co/CsSyvXjX/Generacional-C.jpg"
       }
     ];
 
@@ -292,65 +315,172 @@
       );
     };
 
-    const ProductCard = ({ product, onAdd }) => {
+    // Compact Product Tile layout representing smaller dimensions and triggers details modal
+    const ProductCard = ({ product, onSelect }) => {
+      // Shorten the description slightly for the smaller preview tiles
+      const trimmedDescription = product.description.length > 80 
+        ? product.description.substring(0, 80) + '...' 
+        : product.description;
+
+      return (
+        <div 
+          onClick={() => onSelect(product)}
+          className="group flex flex-col h-full bg-white rounded-2xl p-4 shadow-md hover:shadow-xl border-2 border-slate-200 hover:border-indigo-600 transition-all duration-300 cursor-pointer"
+        >
+          <div className="relative overflow-hidden rounded-xl aspect-[3/4] bg-slate-100">
+            <img 
+              src={product.image} 
+              alt={product.name} 
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+          
+          <div className="mt-4 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 className="font-extrabold text-base text-indigo-950 leading-tight uppercase tracking-tight mb-1">
+                {product.name}
+              </h3>
+              <p className="text-[11px] text-slate-600 font-semibold leading-relaxed mb-3">
+                {trimmedDescription}
+              </p>
+            </div>
+            
+            <button 
+              className="w-full bg-slate-100 text-indigo-950 hover:bg-indigo-950 hover:text-white py-2 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300"
+            >
+              Ver Opciones
+            </button>
+          </div>
+        </div>
+      );
+    };
+
+    // Interactive Detailed Product Modal Component
+    const ProductDetailModal = ({ product, onClose, onAdd }) => {
       const [selectedSize, setSelectedSize] = useState("10");
+      const [quantity, setQuantity] = useState(1);
+
+      if (!product) return null;
+
       const currentPrice = product.prices[selectedSize];
       const isCustomPrice = currentPrice === "CONSULTENOS";
 
+      const handleAddToCart = () => {
+        onAdd(product, selectedSize, quantity);
+        onClose();
+      };
+
       return (
-        <div className="group flex flex-col h-full bg-white rounded-[2rem] p-6 shadow-xl border-2 border-slate-200 hover:border-indigo-600 transition-all duration-300">
-          <div className="relative">
-            <ZoomImage src={product.image} alt={product.name} />
-          </div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          {/* Glassmorphism backdrop blurring the catalog background */}
+          <div 
+            className="fixed inset-0 bg-indigo-950/40 backdrop-blur-md transition-opacity duration-300" 
+            onClick={onClose} 
+          />
           
-          <div className="mt-8 flex-1 flex flex-col">
-            <div className="mb-4">
-              <h3 className="font-black text-2xl text-slate-950 leading-tight uppercase tracking-tighter mb-1">
-                {product.name}
-              </h3>
-              <div className="flex items-center gap-2">
-                {isCustomPrice ? (
-                  <span className="text-xl font-black text-indigo-700 uppercase tracking-tight">Consultar Valor</span>
-                ) : (
-                  <span className="text-3xl font-black text-indigo-700">${currentPrice.toLocaleString('es-CL')}</span>
-                )}
-                <span className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">
-                  {isCustomPrice ? "Hecho a medida" : "Valor según talla"}
-                </span>
-              </div>
+          {/* Main Modal Container */}
+          <div className="relative bg-white w-full max-w-4xl rounded-[2rem] shadow-2xl p-6 md:p-8 animate-in zoom-in-95 duration-200 z-10 flex flex-col md:flex-row gap-8 overflow-hidden max-h-[90vh]">
+            
+            {/* Close Trigger Button */}
+            <button 
+              onClick={onClose} 
+              className="absolute top-4 right-4 p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full transition-colors z-20"
+            >
+              <XIcon className="w-5 h-5" />
+            </button>
+            
+            {/* Left Column: Premium Zoom Image */}
+            <div className="w-full md:w-1/2 flex-shrink-0">
+              <ZoomImage src={product.image} alt={product.name} />
             </div>
             
-            <p className="text-sm text-slate-800 font-medium mb-6 leading-relaxed flex-1">
-              {product.description}
-            </p>
+            {/* Right Column: Dynamic details, selectors and CTA */}
+            <div className="flex-1 flex flex-col justify-between overflow-y-auto pr-1">
+              <div>
+                <h3 className="font-black text-3xl text-indigo-950 leading-tight uppercase mb-2 mt-2">
+                  {product.name}
+                </h3>
+                
+                {/* Price Display */}
+                <div className="flex items-center gap-2 mb-4">
+                  {isCustomPrice ? (
+                    <span className="text-xl font-black text-indigo-700 uppercase tracking-tight">Consultar Valor</span>
+                  ) : (
+                    <span className="text-3xl font-black text-indigo-700">${currentPrice.toLocaleString('es-CL')}</span>
+                  )}
+                  <span className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">
+                    {isCustomPrice ? "Hecho a medida" : "Valor según talla"}
+                  </span>
+                </div>
+                
+                <p className="text-xs text-slate-700 font-semibold leading-relaxed mb-6">
+                  {product.description}
+                </p>
 
-            <div className="space-y-3 mb-6">
-              <label className="text-xs uppercase font-black text-indigo-950 tracking-widest block border-b border-slate-100 pb-1">
-                Selecciona la Talla:
-              </label>
-              <div className="grid grid-cols-5 gap-2">
-                {product.sizes.map(size => (
-                  <button 
-                    key={size}
-                    onClick={() => setSelectedSize(size)}
-                    className={`h-10 text-[11px] font-black rounded-lg transition-all border-2 ${
-                      selectedSize === size 
-                      ? 'bg-indigo-950 border-indigo-950 text-white shadow-md' 
-                      : 'bg-white border-slate-300 text-slate-950 hover:border-indigo-600 hover:bg-slate-50'
-                    }`}
-                  >
-                    {size}
-                  </button>
-                ))}
+                {/* Size Selector */}
+                <div className="space-y-3 mb-6">
+                  <label className="text-xs uppercase font-black text-indigo-950 tracking-widest block border-b border-slate-100 pb-1">
+                    Selecciona la Talla:
+                  </label>
+                  <div className="grid grid-cols-5 gap-2 max-h-[110px] overflow-y-auto pr-1">
+                    {product.sizes.map(size => (
+                      <button 
+                        key={size}
+                        onClick={() => setSelectedSize(size)}
+                        className={`h-9 text-[11px] font-black rounded-lg transition-all border-2 ${
+                          selectedSize === size 
+                          ? 'bg-indigo-950 border-indigo-950 text-white shadow-md' 
+                          : 'bg-white border-slate-300 text-slate-950 hover:border-indigo-600 hover:bg-slate-50'
+                        }`}
+                      >
+                        {size}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Quantity Selector */}
+                <div className="space-y-3 mb-6">
+                  <label className="text-xs uppercase font-black text-indigo-950 tracking-widest block border-b border-slate-100 pb-1">
+                    Cantidad:
+                  </label>
+                  <div className="flex items-center gap-2">
+                    <button 
+                      onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
+                      className="w-8 h-8 flex items-center justify-center bg-slate-100 hover:bg-indigo-950 hover:text-white rounded-lg transition-all font-bold text-base"
+                    >
+                      -
+                    </button>
+                    <span className="text-base font-black w-10 text-center text-slate-950">{quantity}</span>
+                    <button 
+                      onClick={() => setQuantity(prev => prev + 1)}
+                      className="w-8 h-8 flex items-center justify-center bg-slate-100 hover:bg-indigo-950 hover:text-white rounded-lg transition-all font-bold text-base"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            <button 
-              onClick={() => onAdd(product, selectedSize)}
-              className="w-full bg-indigo-950 hover:bg-indigo-800 text-white py-4 rounded-xl font-black flex items-center justify-center gap-3 transition-all active:scale-95 shadow-lg uppercase tracking-widest text-xs"
-            >
-              <PlusIcon className="w-5 h-5 mr-1" /> Agregar al Carro
-            </button>
+              {/* Subtotal & Add Button */}
+              <div className="space-y-4 border-t border-slate-100 pt-4">
+                {!isCustomPrice && (
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-500 font-bold uppercase">Subtotal del item:</span>
+                    <span className="text-xl font-black text-slate-950">${(currentPrice * quantity).toLocaleString('es-CL')} CLP</span>
+                  </div>
+                )}
+                
+                <button 
+                  onClick={handleAddToCart}
+                  className="w-full bg-indigo-950 hover:bg-indigo-800 text-white py-4 rounded-xl font-black flex items-center justify-center gap-3 transition-all active:scale-95 shadow-lg uppercase tracking-widest text-xs"
+                >
+                  <PlusIcon className="w-5 h-5 mr-1" /> Agregar al Carro
+                </button>
+              </div>
+              
+            </div>
+            
           </div>
         </div>
       );
@@ -359,6 +489,7 @@
     function App() {
       const [cart, setCart] = useState([]);
       const [isCartOpen, setIsCartOpen] = useState(false);
+      const [selectedProduct, setSelectedProduct] = useState(null);
       const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -373,14 +504,14 @@
       const GOOGLE_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(PICKUP_ADDRESS)}`;
       const APPLE_MAPS_URL = `https://maps.apple.com/?q=${encodeURIComponent(PICKUP_ADDRESS)}`;
 
-      const addToCart = (product, size) => {
+      const addToCart = (product, size, qtyToAdd = 1) => {
         const priceForSize = product.prices[size];
         const cartId = `${product.id}-${size}`;
         const existing = cart.find(item => item.cartId === cartId);
         
         if (existing) {
           setCart(cart.map(item => 
-            item.cartId === cartId ? { ...item, quantity: item.quantity + 1 } : item
+            item.cartId === cartId ? { ...item, quantity: item.quantity + qtyToAdd } : item
           ));
         } else {
           setCart([...cart, { 
@@ -388,7 +519,7 @@
             cartId, 
             selectedSize: size, 
             price: priceForSize, 
-            quantity: 1 
+            quantity: qtyToAdd 
           }]);
         }
         setIsCartOpen(true);
@@ -698,12 +829,25 @@
               <div className="h-px bg-slate-300 flex-1"></div>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {PRODUCTS.map(product => (
-                <ProductCard key={product.id} product={product} onAdd={addToCart} />
+                <ProductCard 
+                  key={product.id} 
+                  product={product} 
+                  onSelect={(prod) => setSelectedProduct(prod)} 
+                />
               ))}
             </div>
           </main>
+
+          {/* Product Detail Modal */}
+          {selectedProduct && (
+            <ProductDetailModal 
+              product={selectedProduct} 
+              onClose={() => setSelectedProduct(null)} 
+              onAdd={addToCart} 
+            />
+          )}
 
           {/* Carro de Compras Lateral */}
           {isCartOpen && (
@@ -868,7 +1012,7 @@
                   <img 
                     src="https://i.ibb.co/k6yL62mW/conflogo2.png" 
                     alt="Confecciones Mary Logo" 
-                    className="h-20 md:h-24 w-auto object-contain transition-transform duration-300"
+                    className="h-20 md:h-24 w-auto object-contain transition-transform hover:scale-105 duration-300"
                   />
                 </div>
                 
