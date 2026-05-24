@@ -161,13 +161,13 @@
         <line x1="12" y1="2" x2="12" y2="6" />
         <line x1="12" y1="18" x2="12" y2="22" />
         <line x1="2" y1="12" x2="6" y2="12" />
-        <line x1="18" y1="12" x2="22" h2="12" />
+        <line x1="18" y1="12" x2="22" y2="12" />
       </svg>
     );
 
     const ALL_SIZES = ["3", "4", "6", "8", "10", "12", "14", "16", "S", "M", "L", "XL", "2XL", "3XL"];
 
-    // Updated pricing matrix with Polerones Generacionales A, B, C, and D added with specific images
+    // Product Catalog Matrix with newly updated photos
     const PRODUCTS = [
       {
         id: 1,
@@ -178,7 +178,7 @@
           "3": 8000, "4": 8900, "6": 8900, "8": 9000, "10": 10900, "12": 10900, "14": 11900, "16": 11900,
           "S": 12900, "M": 12900, "L": 12900, "XL": 13900, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
         },
-        image: "https://images.unsplash.com/photo-1588850450350-ea1ff71af03c?auto=format&fit=crop&q=80&w=600"
+        image: "https://i.ibb.co/21yXCTkr/polerapique.png"
       },
       {
         id: 2,
@@ -200,7 +200,7 @@
           "3": 17900, "4": 18900, "6": 18900, "8": 19000, "10": 20900, "12": 20900, "14": 22900, "16": 22900,
           "S": 24900, "M": 24900, "L": 24900, "XL": 26900, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
         },
-        image: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&q=80&w=600"
+        image: "https://i.ibb.co/HLbqjBd4/buzo.png"
       },
       {
         id: 4,
@@ -211,7 +211,7 @@
           "3": 10000, "4": 12000, "6": 12000, "8": 13000, "10": 14000, "12": 14000, "14": 15000, "16": 15000,
           "S": 16000, "M": 16000, "L": 16000, "XL": 17000, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
         },
-        image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&q=80&w=600"
+        image: "https://i.ibb.co/HT3SkQVc/chaquetabuzo.png"
       },
       {
         id: 5,
@@ -222,7 +222,7 @@
           "3": 8000, "4": 9000, "6": 9000, "8": 10000, "10": 11000, "12": 11000, "14": 13000, "16": 13000,
           "S": 14000, "M": 14000, "L": 14000, "XL": 15000, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
         },
-        image: "https://images.unsplash.com/photo-1506152983158-b4a74a01c721?auto=format&fit=crop&q=80&w=600"
+        image: "https://i.ibb.co/xtnHZ9ks/pantalonbuzo.png"
       },
       {
         id: 6,
@@ -233,7 +233,7 @@
           "3": 16000, "4": 16000, "6": 16000, "8": 17000, "10": 18900, "12": 18900, "14": 20000, "16": 20000,
           "S": 22000, "M": 22000, "L": 22000, "XL": 24000, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
         },
-        image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=600"
+        image: "https://i.ibb.co/N2RGz2Ht/polar.png"
       },
       {
         id: 7,
@@ -281,6 +281,7 @@
       }
     ];
 
+    // Image Magnification Component (Desk & Interactive Touch Devices)
     const ZoomImage = ({ src, alt }) => {
       const [zoomStyle, setZoomStyle] = useState({ display: 'none' });
       const [isZooming, setIsZooming] = useState(false);
@@ -325,9 +326,8 @@
       );
     };
 
-    // Compact Product Tile layout representing smaller dimensions and triggers details modal
+    // Compact Product Tile layout for high quality desktop/mobile grid view
     const ProductCard = ({ product, onSelect }) => {
-      // Shorten the description slightly for the smaller preview tiles
       const trimmedDescription = product.description.length > 80 
         ? product.description.substring(0, 80) + '...' 
         : product.description;
@@ -365,7 +365,7 @@
       );
     };
 
-    // Interactive Detailed Product Modal Component
+    // Detailed Modal with Configuration selectors for specific sizing & custom prices
     const ProductDetailModal = ({ product, onClose, onAdd }) => {
       const [selectedSize, setSelectedSize] = useState("10");
       const [quantity, setQuantity] = useState(1);
@@ -382,16 +382,15 @@
 
       return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          {/* Glassmorphism backdrop blurring the catalog background */}
+          {/* Glassmorphism background blur overlay */}
           <div 
             className="fixed inset-0 bg-indigo-950/40 backdrop-blur-md transition-opacity duration-300" 
             onClick={onClose} 
           />
           
-          {/* Main Modal Container */}
           <div className="relative bg-white w-full max-w-4xl rounded-[2rem] shadow-2xl p-6 md:p-8 animate-in zoom-in-95 duration-200 z-10 flex flex-col md:flex-row gap-8 overflow-hidden max-h-[90vh]">
             
-            {/* Close Trigger Button */}
+            {/* Close Modal Button */}
             <button 
               onClick={onClose} 
               className="absolute top-4 right-4 p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full transition-colors z-20"
@@ -399,19 +398,19 @@
               <XIcon className="w-5 h-5" />
             </button>
             
-            {/* Left Column: Premium Zoom Image */}
+            {/* Image Column */}
             <div className="w-full md:w-1/2 flex-shrink-0">
               <ZoomImage src={product.image} alt={product.name} />
             </div>
             
-            {/* Right Column: Dynamic details, selectors and CTA */}
+            {/* Configuration Column */}
             <div className="flex-1 flex flex-col justify-between overflow-y-auto pr-1">
               <div>
                 <h3 className="font-black text-3xl text-indigo-950 leading-tight uppercase mb-2 mt-2">
                   {product.name}
                 </h3>
                 
-                {/* Price Display */}
+                {/* Responsive dynamic price display */}
                 <div className="flex items-center gap-2 mb-4">
                   {isCustomPrice ? (
                     <span className="text-xl font-black text-indigo-700 uppercase tracking-tight">Consultar Valor</span>
@@ -427,7 +426,7 @@
                   {product.description}
                 </p>
 
-                {/* Size Selector */}
+                {/* Size Grid options */}
                 <div className="space-y-3 mb-6">
                   <label className="text-xs uppercase font-black text-indigo-950 tracking-widest block border-b border-slate-100 pb-1">
                     Selecciona la Talla:
@@ -449,7 +448,7 @@
                   </div>
                 </div>
 
-                {/* Quantity Selector */}
+                {/* Amount options */}
                 <div className="space-y-3 mb-6">
                   <label className="text-xs uppercase font-black text-indigo-950 tracking-widest block border-b border-slate-100 pb-1">
                     Cantidad:
@@ -472,7 +471,7 @@
                 </div>
               </div>
 
-              {/* Subtotal & Add Button */}
+              {/* Action Button */}
               <div className="space-y-4 border-t border-slate-100 pt-4">
                 {!isCustomPrice && (
                   <div className="flex items-center justify-between">
@@ -508,7 +507,7 @@
         notes: ''
       });
 
-      const BUSINESS_PHONE = "56994754523"; // Número oficial de Mary
+      const BUSINESS_PHONE = "56994754523"; 
       const PICKUP_ADDRESS = "Avenida Principal Capitán Ignacio Carrera Pinto 805, Recoleta";
       
       const GOOGLE_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(PICKUP_ADDRESS)}`;
@@ -549,13 +548,11 @@
         }));
       };
 
-      // Filter out non-numeric prices (like "CONSULTENOS") from the mathematical cart subtotal sum
       const total = cart.reduce((sum, item) => {
         const numericPrice = typeof item.price === 'number' ? item.price : 0;
         return sum + (numericPrice * item.quantity);
       }, 0);
 
-      // Check if there is any custom-measured product added to the cart
       const hasCustomItems = cart.some(item => item.price === "CONSULTENOS");
 
       const handleSendWhatsApp = (e) => {
@@ -592,12 +589,12 @@
       return (
         <div className="min-h-screen bg-slate-50 font-sans text-slate-950">
           
-          {/* Navegación Principal - NAVBAR NO PEGAJOSA */}
-          <nav className="relative z-40 bg-indigo-950 border-b-4 border-amber-400 shadow-xl">
+          {/* Main Navigation (Standard-compliant layout structure) */}
+          <nav className="relative z-40 bg-indigo-950 border-b-4 border-amber-400 shadow-xl" aria-label="Navegación principal">
             <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between relative">
               
-              {/* Logo con posicionamiento absoluto */}
-              <a href="#" className="absolute left-4 top-1 z-50 flex items-center">
+              {/* Absolute logo wrapper */}
+              <a href="#" className="absolute left-4 top-1 z-50 flex items-center" aria-label="Inicio Confecciones Mary">
                 <img 
                   src="https://i.ibb.co/k6yL62mW/conflogo2.png" 
                   alt="Confecciones Mary Logo" 
@@ -605,12 +602,12 @@
                 />
               </a>
               
-              {/* Espaciador para mantener centrado y alineado el botón del carro */}
               <div className="flex-1"></div>
               
               <button 
                 onClick={() => setIsCartOpen(true)}
                 className="group relative p-3 bg-amber-400 hover:bg-white rounded-full transition-all shadow-lg active:scale-90 z-50"
+                aria-label="Ver carrito de compras"
               >
                 <ShoppingCartIcon className="w-6 h-6 text-indigo-950" />
                 {cart.length > 0 && (
@@ -622,7 +619,7 @@
             </div>
           </nav>
 
-          {/* Hero Bienvenida - Background Image visibility enhanced */}
+          {/* Hero Area */}
           <header 
             className="relative py-24 px-4 bg-white bg-cover bg-center overflow-hidden"
             style={{ backgroundImage: "url('https://i.ibb.co/zW40Wg1p/sewing.jpg')" }}
@@ -645,11 +642,11 @@
             </div>
           </header>
 
-          {/* Section: 4 Trust Pillars / Badges right below Hero */}
-          <section className="bg-white border-t border-slate-100 pb-16 px-4">
+          {/* Trust Pillars */}
+          <section className="bg-white border-t border-slate-100 pb-16 px-4" aria-label="Pilares de confianza de confección">
             <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               
-              {/* Pillar 1: Personalized Service (Pink Tape Heart) */}
+              {/* Pillar 1: Personalized Service */}
               <div className="flex flex-col items-center text-center p-6 bg-slate-50/50 rounded-3xl border-2 border-slate-100 hover:border-pink-600/30 hover:bg-slate-50 transition-all duration-300">
                 <div className="w-14 h-14 rounded-2xl bg-pink-50 flex items-center justify-center text-pink-500 mb-5 shadow-sm">
                   <PinkMeasureHeartIcon className="w-7 h-7" />
@@ -660,7 +657,7 @@
                 </p>
               </div>
 
-              {/* Pillar 2: Made in Chile / Local Manufacturing (Chilean Flag) */}
+              {/* Pillar 2: Made in Chile */}
               <div className="flex flex-col items-center text-center p-6 bg-slate-50/50 rounded-3xl border-2 border-slate-100 hover:border-blue-600/30 hover:bg-slate-50 transition-all duration-300">
                 <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-5 shadow-sm border border-blue-100">
                   <ChileFlagIcon className="w-9 h-7 text-indigo-950" />
@@ -671,7 +668,7 @@
                 </p>
               </div>
 
-              {/* Pillar 3: Since 1998 / Tradition of Trust (Golden Laurel Wreath) */}
+              {/* Pillar 3: Since 1998 */}
               <div className="flex flex-col items-center text-center p-6 bg-slate-50/50 rounded-3xl border-2 border-slate-100 hover:border-amber-500/30 hover:bg-slate-50 transition-all duration-300">
                 <div className="w-14 h-14 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-500 mb-5 shadow-sm">
                   <GoldenLaurelTrustIcon className="w-7 h-7" />
@@ -682,7 +679,7 @@
                 </p>
               </div>
 
-              {/* Pillar 4: Year-Round Availability (Emerald Circle Loop) */}
+              {/* Pillar 4: Year-Round Availability */}
               <div className="flex flex-col items-center text-center p-6 bg-slate-50/50 rounded-3xl border-2 border-slate-100 hover:border-emerald-600/30 hover:bg-slate-50 transition-all duration-300">
                 <div className="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-5 shadow-sm">
                   <YearRoundIcon className="w-7 h-7" />
@@ -696,7 +693,7 @@
             </div>
           </section>
 
-          {/* Seccion Experiencia Escuela El Carmen 270 */}
+          {/* Section: Escuela El Carmen 270 Alignment */}
           <section 
             className="relative text-white py-20 px-4 border-y-4 border-amber-400 bg-cover bg-center overflow-hidden"
             style={{ backgroundImage: "url('https://i.ibb.co/tpVSjPtw/DSC-1262.jpg')" }}
@@ -705,7 +702,7 @@
 
             <div className="relative z-10 max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
               
-              {/* Insignia Escolar */}
+              {/* Institution Badge Card */}
               <div className="w-full lg:w-1/3 flex flex-col items-center text-center bg-indigo-950/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/20 shadow-2xl relative overflow-hidden group">
                 <a 
                   href="https://escuelaelcarmen.cl/"
@@ -741,7 +738,7 @@
                 </a>
               </div>
 
-              {/* Reseña de Proveedor */}
+              {/* High Quality Legacy Review */}
               <div className="w-full lg:w-2/3 space-y-6 drop-shadow-lg">
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="bg-amber-400 text-indigo-950 px-4 py-1.5 rounded-xl text-xs font-black uppercase tracking-wider flex items-center gap-2 shadow-md">
@@ -772,7 +769,7 @@
                     </div>
                     <div>
                       <h4 className="font-black text-sm uppercase text-white tracking-wide">Fidelidad de Diseño</h4>
-                      <p className="text-xs text-indigo-150 font-semibold">Bordados de alta precisión y colores institucionales exactos.</p>
+                      <p className="text-xs text-indigo-150 font-semibold">Bordados de alta precisión and colores institucionales exactos.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 bg-indigo-955/80 p-4 rounded-2xl border border-white/10 shadow-lg">
@@ -789,8 +786,8 @@
             </div>
           </section>
 
-          {/* Map and Pickup details Block */}
-          <section className="bg-slate-100 py-16 px-4 border-b-2 border-slate-200">
+          {/* Map Section */}
+          <section className="bg-slate-100 py-16 px-4 border-b-2 border-slate-200" aria-label="Ubicación física y retiro">
             <div className="max-w-5xl mx-auto bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border-2 border-slate-200">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
                 <div className="space-y-4 flex-1">
@@ -831,7 +828,7 @@
             </div>
           </section>
 
-          {/* Catálogo */}
+          {/* Catalog Grid */}
           <main className="max-w-7xl mx-auto px-4 py-20">
             <div className="flex items-center gap-6 mb-16">
               <h2 className="text-3xl font-black text-indigo-950 uppercase tracking-tighter shrink-0">Catálogo Oficial</h2>
@@ -850,7 +847,7 @@
             </div>
           </main>
 
-          {/* Product Detail Modal */}
+          {/* Product Detail Modal Renderer */}
           {selectedProduct && (
             <ProductDetailModal 
               product={selectedProduct} 
@@ -859,9 +856,9 @@
             />
           )}
 
-          {/* Carro de Compras Lateral */}
+          {/* Interactive Slide-out Cart Panel */}
           {isCartOpen && (
-            <div className="fixed inset-0 z-50 flex justify-end">
+            <div className="fixed inset-0 z-50 flex justify-end" role="dialog" aria-modal="true" aria-label="Carrito de compras">
               <div className="absolute inset-0 bg-indigo-950/70 backdrop-blur-md" onClick={() => setIsCartOpen(false)} />
               
               <div className="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col animate-in slide-in-from-right duration-500">
@@ -870,11 +867,12 @@
                     <h3 className="font-black text-2xl uppercase tracking-tighter">Mi Compra</h3>
                     <p className="text-xs text-amber-400 font-bold uppercase tracking-widest mt-1">Confecciones Mary</p>
                   </div>
-                  <button onClick={() => setIsCartOpen(false)} className="p-2 hover:bg-white/10 rounded-full transition-colors">
+                  <button onClick={() => setIsCartOpen(false)} className="p-2 hover:bg-white/10 rounded-full transition-colors" aria-label="Cerrar carro">
                     <XIcon className="w-8 h-8 text-white" />
                   </button>
                 </div>
 
+                {/* Scrollable list of items */}
                 <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-50">
                   {cart.length === 0 ? (
                     <div className="text-center py-32">
@@ -889,22 +887,22 @@
                       const isCustom = item.price === "CONSULTENOS";
                       return (
                         <div key={item.cartId} className="flex gap-4 p-4 bg-white rounded-2xl border-2 border-slate-200 shadow-sm animate-in fade-in slide-in-from-bottom-2">
-                          <img src={item.image} className="w-20 h-24 object-cover rounded-xl shrink-0" />
+                          <img src={item.image} className="w-20 h-24 object-cover rounded-xl shrink-0" alt={item.name} />
                           <div className="flex-1">
                             <h4 className="font-black text-slate-950 text-base leading-tight uppercase">{item.name}</h4>
                             <p className="text-[11px] font-black text-indigo-700 uppercase mt-1">Talla: {item.selectedSize}</p>
                             <div className="flex items-center justify-between mt-3">
                               <div className="flex items-center gap-1 bg-slate-100 rounded-lg p-1 border border-slate-200">
-                                <button onClick={() => updateQuantity(item.cartId, -1)} className="w-8 h-8 flex items-center justify-center bg-white hover:bg-indigo-600 hover:text-white rounded-md transition-all shadow-sm font-bold text-lg">-</button>
+                                <button onClick={() => updateQuantity(item.cartId, -1)} className="w-8 h-8 flex items-center justify-center bg-white hover:bg-indigo-600 hover:text-white rounded-md transition-all shadow-sm font-bold text-lg" aria-label="Disminuir cantidad">-</button>
                                 <span className="text-sm font-black w-8 text-center text-slate-950">{item.quantity}</span>
-                                <button onClick={() => updateQuantity(item.cartId, 1)} className="w-8 h-8 flex items-center justify-center bg-white hover:bg-indigo-600 hover:text-white rounded-md transition-all shadow-sm font-bold text-lg">+</button>
+                                <button onClick={() => updateQuantity(item.cartId, 1)} className="w-8 h-8 flex items-center justify-center bg-white hover:bg-indigo-600 hover:text-white rounded-md transition-all shadow-sm font-bold text-lg" aria-label="Aumentar cantidad">+</button>
                               </div>
                               <span className="font-black text-lg text-slate-950">
                                 {isCustom ? "A convenir" : `$${(item.price * item.quantity).toLocaleString('es-CL')}`}
                               </span>
                             </div>
                           </div>
-                          <button onClick={() => removeFromCart(item.cartId)} className="text-slate-400 hover:text-red-600 transition-colors p-1">
+                          <button onClick={() => removeFromCart(item.cartId)} className="text-slate-400 hover:text-red-600 transition-colors p-1" aria-label="Quitar producto de la compra">
                             <XIcon className="w-5 h-5" />
                           </button>
                         </div>
@@ -913,10 +911,9 @@
                   )}
                 </div>
 
-                {/* Formulario de Datos */}
+                {/* Embedded Information form to submit directly on Whatsapp */}
                 {cart.length > 0 && (
                   <div className="p-8 border-t-2 border-slate-200 bg-white shadow-2xl overflow-y-auto max-h-[60vh]">
-                    {/* Advertencia de Retiro Exclusivo con dirección */}
                     <div className="mb-6 p-4 bg-amber-50 border-2 border-amber-400 rounded-2xl text-amber-950 text-xs font-semibold space-y-2">
                       <div className="flex items-center gap-2">
                         <MapPinIcon className="w-5 h-5 text-amber-600 shrink-0" />
@@ -1012,12 +1009,10 @@
             </div>
           )}
 
-          {/* Pie de página */}
+          {/* Footer Component */}
           <footer className="bg-indigo-950 text-white py-24 px-4 border-t-8 border-amber-400">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
               <div className="lg:col-span-1">
-                
-                {/* Logo de imagen en footer */}
                 <div className="flex items-center mb-8">
                   <img 
                     src="https://i.ibb.co/k6yL62mW/conflogo2.png" 
@@ -1080,7 +1075,7 @@
       );
     }
 
-    // Render App
+    // Render App Component safely
     const rootElement = document.getElementById('root');
     const root = ReactDOM.createRoot(rootElement);
     root.render(<App />);
